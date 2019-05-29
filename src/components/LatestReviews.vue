@@ -11,14 +11,14 @@
             <span>{{ project.city }}</span>
         </v-flex>
         <v-flex d-flex xs12 sm6 md3>
-            <p> 
-               ..
-            </p>
+            
+               review
+            
         </v-flex>
         <v-flex d-flex xs12 sm6 md3>
             <div class="text-xs-center">
                 <v-rating class="disabled"
-                v-model= "project.rating"
+                v-model= "rating"
                 color="yellow darken-3"
                 background-color="grey darken-1"
                 empty-icon="$vuetify.icons.ratingFull"
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       projects: [],
+      reviews: [],
     }
   },
   created() {
@@ -66,6 +67,9 @@ export default {
     })
   }
 }
+
+
+
 </script>
 
 

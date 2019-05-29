@@ -50,7 +50,7 @@ export default {
         loading: false,
         formreviews: false,
     }
-  }, 
+  },
   methods: {
     submit() {
         if(this.$refs.reviewform.validate()) {
@@ -69,3 +69,4 @@ export default {
     }
 }
 </script>
+
