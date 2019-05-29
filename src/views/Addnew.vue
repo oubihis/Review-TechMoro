@@ -1,15 +1,14 @@
 <template>
-  <v-dialog max-width="600px" v-model="newdailog">
-    <v-btn flat slot="activator" class="success py-4 block  text-none" href="#">
-    <span>Ajouter rewis</span>
+  <v-dialog max-width="600px" v-model="formreviews">
+    <v-btn flat slot="activator" class="light-blue darken-4 white--text py-4 text-none" href="#">
+    <span>Ajouter reviews</span>
     </v-btn>
     <v-card>
       <v-card-title>
           <h1>Ajouter une nouvelle entreprise</h1>
       </v-card-title>
       <v-card-text>
-        
-        <v-form class="px-3" ref="form">
+        <v-form class="px-3" ref="reviewform">
             <h3 class="mb-4">name of comapny</h3>
             <v-spacer></v-spacer>
             <v-label>Review :</v-label>
@@ -26,7 +25,7 @@
                 hover
                 ></v-rating>
             </div>
-            <v-btn dark block class="py-4" color="blue darken-4 white--text py-4 text-none">
+            <v-btn dark block class="py-4" color="blue darken-4 white--text py-4 text-none" @click="submit" :loading="loading">
               <span>Submit</span>
             </v-btn>
         </v-form>
@@ -37,7 +36,6 @@
   </v-dialog>
 </template>
 
-
 <script>
 import db from '@/fb'
 export default {
@@ -45,13 +43,17 @@ export default {
     return {
         review:'',
         rating:'',
+        inputRules: [
+            validation => !!validation  || 'This field is required',
+            validation => validation .length >= 2 || 'Minimum length is 2 characters'
+        ],
         loading: false,
-        newdailog: false,
+        formreviews: false,
     }
   }, 
   methods: {
     submit() {
-        if(this.$refs.form.validate()) {
+        if(this.$refs.reviewform.validate()) {
               this.loading = true;
               const data = {
               review: this.review,
@@ -59,8 +61,8 @@ export default {
               }
               db.collection('reviews').add(data).then(() => {
               this.loading = false;
-              this.newdailog = false;
-              this.$emit('reviewAdded');
+              this.formreviews = false;
+              this.$emit('companyAdded');
               })    
             }
         }

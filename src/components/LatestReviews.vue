@@ -12,7 +12,7 @@
         </v-flex>
         <v-flex d-flex xs12 sm6 md3>
             <p> 
-                {{ project.review }}
+               ..
             </p>
         </v-flex>
         <v-flex d-flex xs12 sm6 md3>
@@ -33,7 +33,7 @@
         <v-flex d-flex xs12 sm6 md4>
             <div>
                 <v-btn color="info py-4 block  text-none">Voir Plus</v-btn>
-                <Addnew @reviewAdded="snackbar = true"/>
+                <Addnew @companyAdded="snackbar = true"/>
                 <v-btn color="error py-4 block  text-none">Reporting</v-btn>
             </div>
         </v-flex>

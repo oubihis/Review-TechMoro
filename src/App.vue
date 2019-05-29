@@ -8,8 +8,6 @@
       </v-btn>
     </v-snackbar>
 
-
-
     <v-toolbar disable-resize-watcher height="80" class="white">
       <v-toolbar-title class="headline text-uppercase">
         <span>TechRev </span>
